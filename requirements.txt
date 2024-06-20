@@ -1,0 +1,4 @@
+numpy
+nbconvert
+nb-pdf-template
+ipykernel
