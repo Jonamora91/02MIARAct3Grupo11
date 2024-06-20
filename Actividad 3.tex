@@ -84,8 +84,17 @@
     \usepackage{soul}      % strikethrough (\st) support for pandoc >= 3.0.0
     \usepackage{mathrsfs}
     
+    \usepackage{tocbibind}  % Incluye el índice en el ToC
+    \usepackage{fancyhdr}  % Para encabezados y pies de página personalizados
 
-    
+    % Configura los márgenes, la altura del encabezado y la separación del encabezado
+    %\usepackage[margin=1cm,headheight=80pt,includeheadfoot]{geometry}
+
+    %\pagestyle{fancy}
+    %\fancyhf{}  % Limpia los encabezados y pies de página
+    %\rhead{\includegraphics[width=2cm]{resources/header.jpg}}  % Encabezado derecho con imagen
+
+
     % Colors for the hyperref package
     \definecolor{urlcolor}{rgb}{0,.145,.698}
     \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
