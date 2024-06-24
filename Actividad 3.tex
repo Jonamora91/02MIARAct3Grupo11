@@ -94,7 +94,7 @@
     %\fancyhf{}  % Limpia los encabezados y pies de página
     %\rhead{\includegraphics[width=2cm]{resources/header.jpg}}  % Encabezado derecho con imagen
 
-
+    
     % Colors for the hyperref package
     \definecolor{urlcolor}{rgb}{0,.145,.698}
     \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
@@ -415,6 +415,7 @@
     
 
 \begin{document}
+    %\tableofcontents
     \pagenumbering{gobble} % Para desactivar numeración en las páginas anteriores
     \textbf{\Large Índice general}\\[0.5cm]
     \contentsline {section}{\numberline {1}Ejercicios acerca del determinante}{1}{section.1}
@@ -437,7 +438,7 @@
     \contentsline {subsubsection}{\numberline {2.1.1}Implementar en Python un algoritmo de descenso del gradiente (con un máximo de m = \(10⁵\) iteraciones) a partir de los siguientes argumentos tomados en ese orden:}{9}{subsubsection.2.1.1}
     \contentsline {subsubsection}{\numberline {2.1.2}Calcular formalmente \(\{ 𝑡 ∈ R. 𝑓 ′(𝑡) = 0 \}\) para \(𝑓 : 𝑡 ↦ 3𝑡⁴+4𝑡³−12𝑡²+7\).}{11}{subsubsection.2.1.2}
     \contentsline {subsubsection}{\numberline {2.1.3}Con una tolerancia \(z = 10⁻¹²\) y un valor inicial de \(x = 3\) aplicar su algoritmo con razón \(y = 10⁻¹\), \(10⁻²\), \(10⁻³\) luego hacer lo mismo con \(x = 0\). Interpretar el resultado.}{13}{subsubsection.2.1.3}
-    \contentsline {subsubsection}{\numberline {2.1.4}\hyperref [toc0_]{Repetir estos dos últimos apartados con 𝑓 : (𝑠, 𝑡) ↦ 𝑠² + 3𝑠𝑡 + 𝑡³ + 1 y los valores iniciales x = [-1,1], [0,0].}}{17}{subsubsection.2.1.4}
+    \contentsline {subsubsection}{\numberline {2.1.4}{[}Repetir estos dos últimos apartados con \(𝑓 : (𝑠, 𝑡) ↦ 𝑠² + 3𝑠𝑡 + 𝑡³ + 1\) y los valores iniciales x = {[}-1,1{]}, {[}0,0{]}.{]}}{17}{subsubsection.2.1.4}
     \clearpage
     \pagenumbering{arabic} % Para activar la numeración en arábigo
     \setcounter{page}{1}   % Para reiniciar la numeración de páginas desde 1
@@ -869,23 +870,23 @@ implementaciones.}\label{obtener-la-complejidad-computacional-de-cada-una-de-est
     la misma longitud que v).
   \item
     Cálculo del determinante de la matriz combinada: Utilizando
-    np.linalg.det, el costo es O(n\^{}3) en el peor de los casos para
+    np.linalg.det, el costo es \(O(n³)\) en el peor de los casos para
     matrices cuadradas.
   \item
     Cálculo de los cofactores: Se realiza un ciclo for de tamaño n (el
     tamaño de omega). Dentro del ciclo, se calcula el determinante de
     una submatriz de tamaño (n-1) x (n-1), con un costo de
-    O((n-1)\^{}3).
+    \(O((n-1)³)\).
   \end{itemize}
 
-  Por lo tanto, el costo de calcular los cofactores es O(n *
-  (n-1)\^{}3), que es equivalente a O(n\^{}4). Verificación del
+  Por lo tanto, el costo de calcular los cofactores es
+  \(O(n * (n-1)³)\), que es equivalente a \(O(n⁴)\). Verificación del
   determinante: Tiene un costo de O(n), ya que se realiza una suma de n
   términos.
 \end{itemize}
 
 \begin{quote}
-\emph{"La complejidad computacional total del código es O(n\^{}4), lo
+\emph{"La complejidad computacional total del código es \(O(n⁴)\), lo
 que significa que el tiempo de ejecución crece con la cuarta potencia
 del tamaño de la matriz. Este es un tiempo de ejecución relativamente
 alto, especialmente para matrices grandes."}
@@ -1331,9 +1332,9 @@ No se encontró una raíz dentro de los límites permitidos.
     \textbf{Interpretación}:
 
 La tasa de aprendizaje \(( y = 10^{-1} )\) es demasiado alta. Esto hace
-que las actualizaciones en \$ x \$ sean muy grandes, causando que los
-valores se vuelvan extremadamente grandes en poco tiempo, lo que lleva a
-un desbordamiento numérico. Este es un claro ejemplo de cómo una tasa de
+que las actualizaciones en x sean muy grandes, causando que los valores
+se vuelvan extremadamente grandes en poco tiempo, lo que lleva a un
+desbordamiento numérico. Este es un claro ejemplo de cómo una tasa de
 aprendizaje demasiado grande puede desestabilizar el algoritmo de
 descenso de gradiente.
 
@@ -1466,7 +1467,7 @@ Raíz encontrada: 0
     \textbf{Interpretación}:
 
 Igual que con \(( y = 10^{-1} )\), el algoritmo reconoce que el punto
-inicial \$x = 0 \$ ya es una raíz de la derivada. No se requieren
+inicial x = 0 ya es una raíz de la derivada. No se requieren
 actualizaciones adicionales.
 
     \textbf{Tasa de aprendizaje} \(y=10^{-3}\)
@@ -1523,7 +1524,10 @@ Estos resultados ilustran cómo la elección de la tasa de aprendizaje y
 el punto inicial pueden influir significativamente en el comportamiento
 y eficiencia del algoritmo de descenso de gradiente.
 
-    \subsubsection{\texorpdfstring{\hyperref[toc0_]{Repetir estos dos últimos apartados con 𝑓 : (𝑠, 𝑡) ↦ 𝑠² + 3𝑠𝑡 + 𝑡³ + 1 y los valores iniciales x = [-1,1], [0,0].}}{}}\label{repetir-estos-dos-uxfaltimos-apartados-con-ux1d453-ux1d460-ux1d461-ux1d460-3ux1d460ux1d461-ux1d461-1-y-los-valores-iniciales-x--11-00.}
+    \subsubsection{\texorpdfstring{{[}Repetir estos dos últimos apartados
+con \(𝑓 : (𝑠, 𝑡) ↦ 𝑠² + 3𝑠𝑡 + 𝑡³ + 1\) y los valores iniciales x =
+{[}-1,1{]},
+{[}0,0{]}.{]}}{{[}Repetir estos dos últimos apartados con 𝑓 : (𝑠, 𝑡) ↦ 𝑠² + 3𝑠𝑡 + 𝑡³ + 1 y los valores iniciales x = {[}-1,1{]}, {[}0,0{]}.{]}}}\label{repetir-estos-dos-uxfaltimos-apartados-con-ux1d453-ux1d460-ux1d461-ux1d460-3ux1d460ux1d461-ux1d461-1-y-los-valores-iniciales-x--11-00.}
 
     \textbf{2.1.4.1: Calcular formalmente
 \({ (s, t) ∈ R^{2} | f(s, t) = 0 }\)}
@@ -1702,10 +1706,10 @@ Raíz encontrada: [-2.25  1.5 ]
     \end{Verbatim}
 
     \textbf{Interpretación}: Con una tasa de aprendizaje aún más pequeña de
-\(0.001\), el algoritmo requiere muchas más iteraciones (\(31,559\))
-para converger a la misma raíz \(([-2.25, 1.5])\). Esto demuestra que
-una tasa de aprendizaje muy baja resulta en una convergencia muy lenta,
-aunque sigue siendo precisa.
+\(0.001\), el algoritmo requiere muchas más iteraciones para converger a
+la misma raíz \(([-2.25, 1.5])\). Esto demuestra que una tasa de
+aprendizaje muy baja resulta en una convergencia muy lenta, aunque sigue
+siendo precisa.
 
     \begin{itemize}
 \tightlist

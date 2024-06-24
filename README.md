@@ -39,7 +39,8 @@ jupyter nbconvert --to=pdf Actividad\ 3.ipynb
 ##
 
 ##
-\pagenumbering{gobble} % Para desactivar numeración en las páginas anteriores
+    %\tableofcontents
+    \pagenumbering{gobble} % Para desactivar numeración en las páginas anteriores
     \textbf{\Large Índice general}\\[0.5cm]
     \contentsline {section}{\numberline {1}Ejercicios acerca del determinante}{1}{section.1}
     \contentsline {subsection}{\numberline {1.1}Desarrollo de Laplace.}{1}{subsection.1.1}
@@ -61,7 +62,7 @@ jupyter nbconvert --to=pdf Actividad\ 3.ipynb
     \contentsline {subsubsection}{\numberline {2.1.1}Implementar en Python un algoritmo de descenso del gradiente (con un máximo de m = \(10⁵\) iteraciones) a partir de los siguientes argumentos tomados en ese orden:}{9}{subsubsection.2.1.1}
     \contentsline {subsubsection}{\numberline {2.1.2}Calcular formalmente \(\{ 𝑡 ∈ R. 𝑓 ′(𝑡) = 0 \}\) para \(𝑓 : 𝑡 ↦ 3𝑡⁴+4𝑡³−12𝑡²+7\).}{11}{subsubsection.2.1.2}
     \contentsline {subsubsection}{\numberline {2.1.3}Con una tolerancia \(z = 10⁻¹²\) y un valor inicial de \(x = 3\) aplicar su algoritmo con razón \(y = 10⁻¹\), \(10⁻²\), \(10⁻³\) luego hacer lo mismo con \(x = 0\). Interpretar el resultado.}{13}{subsubsection.2.1.3}
-    \contentsline {subsubsection}{\numberline {2.1.4}\hyperref [toc0_]{Repetir estos dos últimos apartados con 𝑓 : (𝑠, 𝑡) ↦ 𝑠² + 3𝑠𝑡 + 𝑡³ + 1 y los valores iniciales x = [-1,1], [0,0].}}{17}{subsubsection.2.1.4}
+    \contentsline {subsubsection}{\numberline {2.1.4}{[}Repetir estos dos últimos apartados con \(𝑓 : (𝑠, 𝑡) ↦ 𝑠² + 3𝑠𝑡 + 𝑡³ + 1\) y los valores iniciales x = {[}-1,1{]}, {[}0,0{]}.{]}}{17}{subsubsection.2.1.4}
     \clearpage
     \pagenumbering{arabic} % Para activar la numeración en arábigo
     \setcounter{page}{1}   % Para reiniciar la numeración de páginas desde 1
