@@ -10,7 +10,7 @@
     % Keep aspect ratio if custom image width or height is specified
     \setkeys{Gin}{keepaspectratio}
     % Maintain compatibility with old templates. Remove in nbconvert 6.0
-    \let\Oldincludegraphics\includegraphics
+    %\let\Oldincludegraphics\includegraphics
     % Ensure that by default, figures have no caption (until we provide a
     % proper Figure object with a Caption API and a way to capture that
     % in the conversion process - todo).
@@ -69,7 +69,6 @@
     % The hyperref package gives us a pdf with properly built
     % internal navigation ('pdf bookmarks' for the table of contents,
     % internal cross-reference links, web links for URLs, etc.)
-    \usepackage{tocbibind}
     \usepackage{hyperref}
     % The default LaTeX title has an obnoxious amount of whitespace. By default,
     % titling removes some of it. It also provides customization options.
@@ -83,16 +82,7 @@
                                 % normalem makes italics be italics, not underlines
     \usepackage{soul}      % strikethrough (\st) support for pandoc >= 3.0.0
     \usepackage{mathrsfs}
-    
-    \usepackage{tocbibind}  % Incluye el índice en el ToC
-    \usepackage{fancyhdr}  % Para encabezados y pies de página personalizados
-
-    % Configura los márgenes, la altura del encabezado y la separación del encabezado
-    %\usepackage[margin=1cm,headheight=80pt,includeheadfoot]{geometry}
-
-    %\pagestyle{fancy}
-    %\fancyhf{}  % Limpia los encabezados y pies de página
-    %\rhead{\includegraphics[width=2cm]{resources/header.jpg}}  % Encabezado derecho con imagen
+    \usepackage{tikz}
 
     
     % Colors for the hyperref package
@@ -177,30 +167,8 @@
     \renewcommand{\LaTeX}{\textrm{\Oldlatex}}
     % Document parameters
     % Document title
-    \begin{titlepage}
-      % Encabezado de la Institución
-      \begin{center}
-        \includegraphics[width=0.5\textwidth]{resources/viu.png}\\[2cm]
-        \textbf{\Huge Actividad evaluada \#3}\\[1cm]
-      \end{center}
+    % Crear la portada sin añadir una página en blanco adicional
 
-      % Detalles del Trabajo
-      \begin{center}
-        \textbf{\Large 02MIAR}\\[0.5cm]
-        \textbf{\large Matemáticas para la Inteligencia Artificial}\\[2cm]
-        
-        \textbf{\Large Profesor}\\[0.5cm]
-        \textbf{\large Dr. Matthieu F.-W. Huber}\\[2cm]
-        
-        \textbf{\Large Grupo No. 11}\\[1cm]
-        \textbf{\large Jonathan Mora}\\
-        \textbf{\large Luis Jama Tello}\\
-        \textbf{\large Blanca Santos Fernández}\\
-        \textbf{\large Laura Betancourt Leal}\\[2cm]
-        
-        \textbf{\Large Junio 2024}
-      \end{center}
-  \end{titlepage}
 
 % Pygments definitions
 \makeatletter
@@ -408,42 +376,32 @@
       linkcolor=black,
       citecolor=citecolor,
       }
-    % Slightly bigger margins than the latex defaults
     
+    % Slightly bigger margins than the latex defaults    
     \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
-    
-    
 
+    \renewcommand{\contentsname}{Contenido}
 \begin{document}
-    %\tableofcontents
-    \pagenumbering{gobble} % Para desactivar numeración en las páginas anteriores
-    \textbf{\Large Índice general}\\[0.5cm]
-    \contentsline {section}{\numberline {1}Ejercicios acerca del determinante}{1}{section.1}
-    \contentsline {subsection}{\numberline {1.1}Desarrollo de Laplace.}{1}{subsection.1.1}
-    \contentsline {subsubsection}{\numberline {1.1.1}Deducir de la definición 4 el determinante en dimensión 0, 1 y 2.}{1}{subsubsection.1.1.1}
-    \contentsline {paragraph}{Dimensión 0}{1}{section*.2}
-    \contentsline {paragraph}{Dimensión 1}{1}{section*.3}
-    \contentsline {paragraph}{Dimensión 2}{1}{section*.4}
-    \contentsline {subsubsection}{\numberline {1.1.2}A partir de la definición 4, expresar el determinante de una matriz cuadrada recursivamente en función de determinantes la matrices cuadradas de dimensión inferior.}{2}{subsubsection.1.1.2}
-    \contentsline {subsubsection}{\numberline {1.1.3}Implementar en Python la definición así obtenida.}{3}{subsubsection.1.1.3}
-    \contentsline {subsection}{\numberline {1.2}Ejercicio 2 : Eliminación de Gauss--Jordan.}{6}{subsection.1.2}
-    \contentsline {subsubsection}{\numberline {1.2.1}Deducir de la definición 4 el efecto que tiene en el determinante de una matriz sumar a una de sus columnas una combinación lineal de las demás.}{6}{subsubsection.1.2.1}
-    \contentsline {subsubsection}{\numberline {1.2.2}A partir de la definición 4, proponer una estrategia para triangularizar una matriz sin cambiar su determinante e implementar en Python una definición alternativa del determinante. Indicación: descomponer similarmente al ejercicio anterior.}{6}{subsubsection.1.2.2}
-    \contentsline {subsubsection}{\numberline {1.2.3}Implementar en Python la definición así obtenida}{6}{subsubsection.1.2.3}
-    \contentsline {subsection}{\numberline {1.3}Ejercicio 3: Comparación.}{6}{subsection.1.3}
-    \contentsline {subsubsection}{\numberline {1.3.1}Obtener la complejidad computacional de cada una de estas dos implementaciones.}{6}{subsubsection.1.3.1}
-    \contentsline {subsubsection}{\numberline {1.3.2}Generar matrices aleatoriamente en dimensión \(n ∈\) \{ 2, 3, · · , 9, 10 \} y comparar el tiempo de ejecución de cada una de estas dos implementaciones con la función numpy.linalg.det (la función determinante de la extensión numérica de Python al álgebra lineal). Indicación: se puede utilizar la función numpy.random.rand para generar los coeficientes aleatorios de sus matrices.}{7}{subsubsection.1.3.2}
-    \contentsline {section}{\numberline {2}Ejercicios acerca del gradiente}{9}{section.2}
-    \contentsline {subsection}{\numberline {2.1}Ejercicio 4 : Método descenso del gradiente}{9}{subsection.2.1}
-    \contentsline {subsubsection}{\numberline {2.1.1}Implementar en Python un algoritmo de descenso del gradiente (con un máximo de m = \(10⁵\) iteraciones) a partir de los siguientes argumentos tomados en ese orden:}{9}{subsubsection.2.1.1}
-    \contentsline {subsubsection}{\numberline {2.1.2}Calcular formalmente \(\{ 𝑡 ∈ R. 𝑓 ′(𝑡) = 0 \}\) para \(𝑓 : 𝑡 ↦ 3𝑡⁴+4𝑡³−12𝑡²+7\).}{11}{subsubsection.2.1.2}
-    \contentsline {subsubsection}{\numberline {2.1.3}Con una tolerancia \(z = 10⁻¹²\) y un valor inicial de \(x = 3\) aplicar su algoritmo con razón \(y = 10⁻¹\), \(10⁻²\), \(10⁻³\) luego hacer lo mismo con \(x = 0\). Interpretar el resultado.}{13}{subsubsection.2.1.3}
-    \contentsline {subsubsection}{\numberline {2.1.4}{[}Repetir estos dos últimos apartados con \(𝑓 : (𝑠, 𝑡) ↦ 𝑠² + 3𝑠𝑡 + 𝑡³ + 1\) y los valores iniciales x = {[}-1,1{]}, {[}0,0{]}.{]}}{17}{subsubsection.2.1.4}
-    \clearpage
-    \pagenumbering{arabic} % Para activar la numeración en arábigo
-    \setcounter{page}{1}   % Para reiniciar la numeración de páginas desde 1
+    % Portada
+    \begin{titlepage}
+        \centering
+        \newgeometry{margin=0cm}
+        % Ajustar la imagen para que ocupe todo el ancho y alto de la página
+        \begin{tikzpicture}[remember picture,overlay]
+            \node at (current page.center) {\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{resources/02MIAR_Actividad3.png}};
+        \end{tikzpicture}
 
-    \newpage
+    \end{titlepage}
+
+    % Generar tabla de contenido
+    \tableofcontents
+    \clearpage
+
+    % Numeración de páginas en arábigo
+    \pagenumbering{arabic}
+    \setcounter{page}{1} 
+
+    % Comienzo del contenido
     \section{Ejercicios acerca del
 determinante}\label{ejercicios-acerca-del-determinante}
 
@@ -765,8 +723,6 @@ obtenida.}\label{implementar-en-python-la-definiciuxf3n-asuxed-obtenida.}
     
     \PY{k}{return} \PY{n}{n}\PY{p}{,} \PY{n}{lambda\PYZus{}}\PY{p}{,} \PY{n}{v}\PY{p}{,} \PY{n}{omega}\PY{p}{,} \PY{n}{A}
 
-
-
 \PY{n}{n}\PY{p}{,} \PY{n}{lambda\PYZus{}}\PY{p}{,} \PY{n}{v}\PY{p}{,} \PY{n}{omega}\PY{p}{,} \PY{n}{A} \PY{o}{=} \PY{n}{generate\PYZus{}random\PYZus{}parameters}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{11}\PY{p}{,}\PY{l+m+mi}{15}\PY{p}{)}
 
 \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{n:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{n}\PY{p}{)}
@@ -819,25 +775,332 @@ determinante de una matriz sumar a una de sus columnas una combinación
 lineal de las
 demás.}\label{deducir-de-la-definiciuxf3n-4-el-efecto-que-tiene-en-el-determinante-de-una-matriz-sumar-a-una-de-sus-columnas-una-combinaciuxf3n-lineal-de-las-demuxe1s.}
 
-    
+    Para la siguiente deducción, tomamos una matriz A genérica de dimensión
+3x3:
+
+    \begin{equation}
+A =
+    \begin{pmatrix}
+        a_{11} & a_{12} & a_{13}\\
+        b_{11} & b_{12} & b_{13}\\
+        c_{11} & c_{12} & c_{13}
+    \end{pmatrix}
+\end{equation}
+
+    Calculamos el determinante de A aplicando la regla de Sarrus:
+
+    det(A) = \(\bigl|\begin{matrix}A\end{matrix}\bigr|\) =
+\(\bigl(\begin{matrix}a_{11} \cdot b_{12} \cdot c_{13}\end{matrix}\bigr)\)+\(\bigl(\begin{matrix}a_{12} \cdot b_{13} \cdot c_{11}\end{matrix}\bigr)\)+\(\bigl(\begin{matrix}a_{13} \cdot b_{11} \cdot c_{12}\end{matrix}\bigr)\)-\(\bigl(\begin{matrix}c_{11} \cdot b_{12} \cdot a_{13}\end{matrix}\bigr)\)-\(\bigl(\begin{matrix}c_{12} \cdot b_{13} \cdot a_{11}\end{matrix}\bigr)\)-\(\bigl(\begin{matrix}c_{13} \cdot b_{11} \cdot a_{12}\end{matrix}\bigr)\)
+
+    Ahora construimos una matriz B sumando a la tercera línea una
+combinación lineal de las otras dos:
+
+    \begin{equation}
+B =
+    \begin{pmatrix}
+        a_{11} & a_{12} & a_{13}\\
+        b_{11} & b_{12} & b_{13}\\
+        2a_{11}-b_{11}+c_{11} & 2a_{12}-b_{12}+c_{12} & 2a_{13}-b_{13}+c_{13}
+    \end{pmatrix}
+\end{equation}
+
+    El determinante de B aplicando la regla de Sarrus es:
+
+    det(B) = \(\bigl|\begin{matrix}B\end{matrix}\bigr|\) =
+\(\bigl[\begin{matrix}a_{11} \cdot b_{12} \cdot (2a_{13}-b_{13}+c_{13})\end{matrix}\bigr]\)+\(\bigl[\begin{matrix}a_{12} \cdot b_{13} \cdot (2a_{11}-b_{11}+c_{11})\end{matrix}\bigr]\)+\(\bigl[\begin{matrix}a_{13} \cdot b_{11} \cdot (2a_{12}-b_{12}+c_{12})\end{matrix}\bigr]\)-\(\bigl[\begin{matrix}(2a_{11}-b_{11}+c_{11}) \cdot b_{12} \cdot a_{13}\end{matrix}\bigr]\)-\(\bigl[\begin{matrix}(2a_{12}-b_{12}+c_{12}) \cdot b_{13} \cdot a_{11}\end{matrix}\bigr]\)-\(\bigl[\begin{matrix}(2a_{13}-b_{13}+c_{13}) \cdot b_{11} \cdot a_{12}\end{matrix}\bigr]\)
+
+    Operando queda:
+
+    \(\bigl|\begin{matrix}B\end{matrix}\bigr|\) =
+\(\bigl(\begin{matrix}a_{11} & b_{12} \cdot 2a_{13}\end{matrix}\bigr)\)-\(\bigl(\begin{matrix}a_{11} \cdot b_{12} \cdot b_{13}\end{matrix}\bigr)\)+
+\(\bigl(\begin{matrix}a_{11} \cdot b_{12} \cdot c_{13}\end{matrix}\bigr)\)+\(\bigl(\begin{matrix}a_{12} \cdot b_{13} \cdot 2a_{11}\end{matrix}\bigr)\)-
+\(\bigl(\begin{matrix}a_{12} \cdot b_{13} \cdot b_{11}\end{matrix}\bigr)\)+\(\bigl(\begin{matrix}a_{12} \cdot b_{13} \cdot c_{11}\end{matrix}\bigr)\)+
+\(\bigl(\begin{matrix}a_{13} \cdot b_{11} \cdot 2a_{12}\end{matrix}\bigr)\)-\(\bigl(\begin{matrix}a_{13} \cdot b_{11} \cdot b_{12}\end{matrix}\bigr)\)+
+\(\bigl(\begin{matrix}a_{13} \cdot b_{11} \cdot c_{12}\end{matrix}\bigr)\)-\(\bigl(\begin{matrix}2a_{11} \cdot b_{12} \cdot a_{13}\end{matrix}\bigr)\)+
+\(\bigl(\begin{matrix}b_{11} \cdot b_{12} \cdot a_{13}\end{matrix}\bigr)\)-\(\bigl(\begin{matrix}c_{11} \cdot b_{12} \cdot a_{13}\end{matrix}\bigr)\)-
+\(\bigl(\begin{matrix}2a_{12} \cdot b_{13} \cdot a_{11}\end{matrix}\bigr)\)+\(\bigl(\begin{matrix}b_{12} \cdot b_{13} \cdot a_{11}\end{matrix}\bigr)\)-
+\(\bigl(\begin{matrix}c_{12} \cdot b_{13} \cdot a_{11}\end{matrix}\bigr)\)-\(\bigl(\begin{matrix}2a_{13} \cdot b_{11} \cdot a_{12}\end{matrix}\bigr)\)+
+\(\bigl(\begin{matrix}b_{13} \cdot b_{11} \cdot a_{12}\end{matrix}\bigr)\)-\(\bigl(\begin{matrix}c_{13} \cdot b_{11} \cdot a_{12}\end{matrix}\bigr)\)
+
+    A continuación agrupamos los términos:
+
+    \(\bigl|\begin{matrix}B\end{matrix}\bigr|\) =
+\(\bigl(\begin{matrix}2a_{13} \cdot a_{11} \cdot b_{12}\end{matrix}\bigr)\)+\(\bigl(\begin{matrix}2a_{11} \cdot a_{12} \cdot b_{13}\end{matrix}\bigr)\)+
+\(\bigl(\begin{matrix}2a_{12} \cdot a_{13} \cdot b_{11}\end{matrix}\bigr)\)-\(\bigl(\begin{matrix}2a_{11} \cdot a_{13} \cdot b_{12}\end{matrix}\bigr)\)-
+\(\bigl(\begin{matrix}2a_{12} \cdot a_{11} \cdot b_{13}\end{matrix}\bigr)\)-\(\bigl(\begin{matrix}2a_{13} \cdot a_{12} \cdot b_{11}\end{matrix}\bigr)\)-
+\(\bigl(\begin{matrix}b_{12} \cdot b_{13} \cdot a_{11}\end{matrix}\bigr)\)-\(\bigl(\begin{matrix}b_{13} \cdot b_{11} \cdot a_{12}\end{matrix}\bigr)\)-
+\(\bigl(\begin{matrix}b_{11} \cdot b_{12} \cdot a_{13}\end{matrix}\bigr)\)+\(\bigl(\begin{matrix}b_{11} \cdot b_{12} \cdot a_{13}\end{matrix}\bigr)\)+
+\(\bigl(\begin{matrix}b_{12} \cdot b_{13} \cdot a_{11}\end{matrix}\bigr)\)+\(\bigl(\begin{matrix}b_{13} \cdot b_{11} \cdot a_{12}\end{matrix}\bigr)\)+
+\(\bigl(\begin{matrix}a_{11} \cdot b_{12} \cdot c_{13}\end{matrix}\bigr)\)+\(\bigl(\begin{matrix}a_{12} \cdot b_{13} \cdot c_{11}\end{matrix}\bigr)\)+
+\(\bigl(\begin{matrix}a_{13} \cdot b_{11} \cdot c_{12}\end{matrix}\bigr)\)-\(\bigl(\begin{matrix}c_{11} \cdot b_{12} \cdot a_{13}\end{matrix}\bigr)\)-
+\(\bigl(\begin{matrix}c_{12} \cdot b_{13} \cdot a_{11}\end{matrix}\bigr)\)-\(\bigl(\begin{matrix}c_{13} \cdot b_{11} \cdot a_{12}\end{matrix}\bigr)\)
+
+    \(= 2 \cdot \bigl[\)
+\(\bigl(\begin{matrix}a_{13} \cdot a_{11} \cdot b_{12}\end{matrix}\bigr)\)+\(\bigl(\begin{matrix}a_{11} \cdot a_{12} \cdot b_{13}\end{matrix}\bigr)\)+
+\(\bigl(\begin{matrix}a_{12} \cdot a_{13} \cdot b_{11}\end{matrix}\bigr)\)-\(\bigl(\begin{matrix}a_{11} \cdot a_{13} \cdot b_{12}\end{matrix}\bigr)\)-
+\(\bigl(\begin{matrix}a_{12} \cdot a_{11} \cdot b_{13}\end{matrix}\bigr)\)-\(\bigl(\begin{matrix}a_{13} \cdot a_{12} \cdot b_{11}\end{matrix}\bigr)\bigl]\)-
+\(\bigl(\begin{matrix}b_{12} \cdot b_{13} \cdot a_{11}\end{matrix}\bigr)\)-\(\bigl(\begin{matrix}b_{13} \cdot b_{11} \cdot a_{12}\end{matrix}\bigr)\)-
+\(\bigl(\begin{matrix}b_{11} \cdot b_{12} \cdot a_{13}\end{matrix}\bigr)\)+\(\bigl(\begin{matrix}b_{11} \cdot b_{12} \cdot a_{13}\end{matrix}\bigr)\)+
+\(\bigl(\begin{matrix}b_{12} \cdot b_{13} \cdot a_{11}\end{matrix}\bigr)\)+\(\bigl(\begin{matrix}b_{13} \cdot b_{11} \cdot a_{12}\end{matrix}\bigr)\)+
+\(\bigl(\begin{matrix}a_{11} \cdot b_{12} \cdot c_{13}\end{matrix}\bigr)\)+\(\bigl(\begin{matrix}a_{12} \cdot b_{13} \cdot c_{11}\end{matrix}\bigr)\)+
+\(\bigl(\begin{matrix}a_{13} \cdot b_{11} \cdot c_{12}\end{matrix}\bigr)\)-\(\bigl(\begin{matrix}c_{11} \cdot b_{12} \cdot a_{13}\end{matrix}\bigr)\)-
+\(\bigl(\begin{matrix}c_{12} \cdot b_{13} \cdot a_{11}\end{matrix}\bigr)\)-\(\bigl(\begin{matrix}c_{13} \cdot b_{11} \cdot a_{12}\end{matrix}\bigr)\)
+
+    Operando queda:
+
+    \(\bigl|\begin{matrix}B\end{matrix}\bigr|\) =
+\(\bigl(\begin{matrix}a_{11} \cdot b_{12} \cdot c_{13}\end{matrix}\bigr)\)+\(\bigl(\begin{matrix}a_{12} \cdot b_{13} \cdot c_{11}\end{matrix}\bigr)\)+
+\(\bigl(\begin{matrix}a_{13} \cdot b_{11} \cdot c_{12}\end{matrix}\bigr)\)-\(\bigl(\begin{matrix}c_{11} \cdot b_{12} \cdot a_{13}\end{matrix}\bigr)\)-
+\(\bigl(\begin{matrix}c_{12} \cdot b_{13} \cdot a_{11}\end{matrix}\bigr)\)-\(\bigl(\begin{matrix}c_{13} \cdot b_{11} \cdot a_{12}\end{matrix}\bigr)\)
+= \(\bigl|\begin{matrix}A\end{matrix}\bigr|\)
+
+El efecto es que las dos matrices tienen el mismo determinante.
 
     \subsubsection{A partir de la definición 4, proponer una estrategia para
 triangularizar una matriz sin cambiar su determinante e implementar en
-Python una definición alternativa del determinante. Indicación:
-descomponer similarmente al ejercicio
-anterior.}\label{a-partir-de-la-definiciuxf3n-4-proponer-una-estrategia-para-triangularizar-una-matriz-sin-cambiar-su-determinante-e-implementar-en-python-una-definiciuxf3n-alternativa-del-determinante.-indicaciuxf3n-descomponer-similarmente-al-ejercicio-anterior.}
+Python una definición alternativa del
+determinante.}\label{a-partir-de-la-definiciuxf3n-4-proponer-una-estrategia-para-triangularizar-una-matriz-sin-cambiar-su-determinante-e-implementar-en-python-una-definiciuxf3n-alternativa-del-determinante.}
 
-    
+    La estrategia propuesta es el método de eliminación de Gauss con pivoteo
+parcial. Consiste en convertir una matriz en una una matriz triangular
+superior. Este método utiliza operaciones elementales, como intercambio
+de filas y multiplicación de filas por escalares, para lograr este
+objetivo.
+
+    Para ilustrar el método de eliminación de Gauss con pivoteo parcial,
+consideremos la siguiente matriz de dimensión 3x3:
+
+    \begin{equation}
+A =
+    \begin{pmatrix}
+        1 & 2 & 3\\
+        4 & 5 & 6\\
+        7 & 8 & 9
+    \end{pmatrix}
+\end{equation}
+
+    Paso 1: Pivoteo parcial para la primera columna:
+
+    \begin{itemize}
+\tightlist
+\item
+  Seleccionamos la primera columna como columna pivote y buscamos el
+  elemento de mayor magnitud (valor absoluto) en esa columna. En este
+  caso, el elemento \textbf{7} en la tercera fila es el mayor.
+\item
+  Intercambiamos la primera fila con la tercera fila para tener un
+  elemento pivote-mayor (7) en la diagonal principal.
+\end{itemize}
+
+    \begin{equation}
+A =
+    \begin{pmatrix}
+        7 & 8 & 9\\
+        4 & 5 & 6\\
+        1 & 2 & 3
+    \end{pmatrix}
+\end{equation}
+
+    Paso2: Eliminación hacia adelante en la primera columna:
+
+    Realizamos operaciones elementales para hacer ceros debajo del pivote
+(7) en la primera columna. - A la segunda fila le sumamos el resultado
+de multiplicar la primera fila por el factor -\(\frac{4}{7}\) - A la
+tercera fila le sumamos el resultado de multiplicar la primera fila por
+el factor -\(\frac{1}{7}\)
+
+    \begin{equation}
+A =
+    \begin{pmatrix}
+        7 & 8 & 9\\
+        4+7\left (-\frac{4}{7}\right)& 5+8\left (-\frac{4}{7}\right) & 6+9\left (-\frac{4}{7}\right)\\
+        1+7\left (-\frac{1}{7}\right) & 2+8\left (-\frac{1}{7}\right) & 3+9\left (-\frac{1}{7}\right)
+    \end{pmatrix}
+\end{equation}
+
+    \begin{equation}
+A =
+    \begin{pmatrix}
+        7 & 8 & 9\\
+        0 & 5 -\frac{32}{7} & 6 -\frac{36}{7}\\
+        0 & 2 -\frac{8}{7} & 3 -\frac{9}{7}
+    \end{pmatrix}
+\end{equation}
+
+    \begin{equation}
+A =
+    \begin{pmatrix}
+        7 & 8 & 9\\
+        0 & \frac{3}{7} & \frac{6}{7}\\
+        0 & \frac{6}{7} & \frac{12}{7}
+    \end{pmatrix}
+\end{equation}
+
+    Paso3: Pivoteo parcial para la segunda columna:
+
+    \begin{itemize}
+\tightlist
+\item
+  Seleccionamos la segunda columna como columna pivote y buscamos el
+  elemento de mayor magnitud (valor absoluto) en esa columna a partir de
+  la fila2. En este caso, el elemento \(\frac{6}{7}\) en la tercera fila
+  es el mayor.
+\item
+  Intercambiamos la segunda fila con la tercera fila para tener un
+  elemento pivote mayor
+\end{itemize}
+
+    \begin{equation}
+A =
+    \begin{pmatrix}
+        7 & 8 & 9\\
+        0 & \frac{6}{7} & \frac{12}{7}\\
+        0 & \frac{3}{7} & \frac{6}{7}
+    \end{pmatrix}
+\end{equation}
+
+    Paso4: Eliminación hacia adelante en la segunda columna:
+
+    Realizamos operaciones elementales anteriores para hacer ceros debajo
+del pivote en la segunda columna. - A la tercera fila le sumamos el
+resultado de multiplicar la segunda fila por el factor \(-\frac{3}{6}\)
+
+    \begin{equation}
+A =
+    \begin{pmatrix}
+        7 & 8 & 9\\
+        0 & \frac{6}{7} & \frac{12}{7}\\
+        0 & \frac{3}{7}+\frac{6}{7} \left (-\frac{3}{6}\right) & \frac{6}{7}+\frac{12}{7} \left (-\frac{3}{6}\right)
+    \end{pmatrix}
+\end{equation}
+
+    \begin{equation}
+A =
+    \begin{pmatrix}
+        7 & 8 & 9\\
+        0 & \frac{6}{7} & \frac{12}{7}\\
+        0 & \frac{3}{7}-\frac{3}{7} & \frac{6}{7}-\frac{6}{7}
+    \end{pmatrix}
+\end{equation}
+
+    \begin{equation}
+A =
+    \begin{pmatrix}
+        7 & 8 & 9\\
+        0 & \frac{6}{7} & \frac{12}{7}\\
+        0 & 0 & 0
+    \end{pmatrix}
+\end{equation}
+
+    La matriz resultante es una matriz triangular superior, y se ha logrado
+sin cambiar el determinante significativamente, salvo por el intercambio
+de filas, que cambia el signo del determinante.
 
     \subsubsection{Implementar en Python la definición así
 obtenida}\label{implementar-en-python-la-definiciuxf3n-asuxed-obtenida}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{94}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+\PY{k+kn}{from} \PY{n+nn}{fractions} \PY{k+kn}{import} \PY{n}{Fraction}
 
+\PY{k}{def} \PY{n+nf}{calcular\PYZus{}determinante}\PY{p}{(}\PY{n}{matriz}\PY{p}{:} \PY{n}{np}\PY{o}{.}\PY{n}{ndarray}\PY{p}{)}\PY{p}{:}
+\PY{+w}{    }\PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+\PY{l+s+sd}{    Función que recibe una matriz (lista de listas) y calcula el determinante utilizando el método de pivoteo parcial.}
+\PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+    \PY{c+c1}{\PYZsh{} Convertir la matriz a tipo Fraction para mantener la precisión}
+    \PY{c+c1}{\PYZsh{} Convertir la matriz a tipo Fraction para mantener la precisión}
+    \PY{n}{matriz} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{vectorize}\PY{p}{(}\PY{n}{Fraction}\PY{p}{)}\PY{p}{(}\PY{n}{matriz}\PY{p}{)}
+
+    \PY{n}{n} \PY{o}{=} \PY{n}{matriz}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+    \PY{n}{signo} \PY{o}{=} \PY{l+m+mi}{1}
+    \PY{n}{det} \PY{o}{=} \PY{l+m+mi}{1}
+
+    \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+        \PY{c+c1}{\PYZsh{} Buscar el máximo en la columna actual desde la fila i hasta el final}
+        \PY{n}{max\PYZus{}valor\PYZus{}index} \PY{o}{=} \PY{n}{i} \PY{o}{+} \PY{n}{np}\PY{o}{.}\PY{n}{argmax}\PY{p}{(}\PY{n+nb}{abs}\PY{p}{(}\PY{n}{matriz}\PY{p}{[}\PY{n}{i}\PY{p}{:}\PY{p}{,} \PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} Intercambio de filas si el valor no es el primero}
+        \PY{k}{if} \PY{n}{max\PYZus{}valor\PYZus{}index} \PY{o}{!=} \PY{n}{i}\PY{p}{:}
+            \PY{c+c1}{\PYZsh{} Se cambia la fila i por la del valor máximo}
+            \PY{n}{matriz}\PY{p}{[}\PY{p}{[}\PY{n}{i}\PY{p}{,} \PY{n}{max\PYZus{}valor\PYZus{}index}\PY{p}{]}\PY{p}{]} \PY{o}{=} \PY{n}{matriz}\PY{p}{[}\PY{p}{[}\PY{n}{max\PYZus{}valor\PYZus{}index}\PY{p}{,} \PY{n}{i}\PY{p}{]}\PY{p}{]}
+            \PY{n}{signo} \PY{o}{*}\PY{o}{=} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}
+            
+        \PY{k}{if} \PY{n}{matriz}\PY{p}{[}\PY{n}{i}\PY{p}{,} \PY{n}{i}\PY{p}{]} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
+            \PY{k}{return} \PY{l+m+mi}{0}\PY{p}{,} \PY{n}{matriz}
+            
+        \PY{c+c1}{\PYZsh{} Eliminación por filas hacia adelante de manera vectorizada}
+        \PY{n}{pivote} \PY{o}{=} \PY{n}{matriz}\PY{p}{[}\PY{n}{i}\PY{p}{,} \PY{n}{i}\PY{p}{]}
+        \PY{n}{factores} \PY{o}{=} \PY{o}{\PYZhy{}}\PY{n}{matriz}\PY{p}{[}\PY{n}{i} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{:}\PY{p}{,} \PY{n}{i}\PY{p}{]} \PY{o}{/} \PY{n}{pivote}
+        \PY{n}{matriz}\PY{p}{[}\PY{n}{i} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{:}\PY{p}{,} \PY{p}{:}\PY{p}{]} \PY{o}{+}\PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{outer}\PY{p}{(}\PY{n}{factores}\PY{p}{,} \PY{n}{matriz}\PY{p}{[}\PY{n}{i}\PY{p}{,} \PY{p}{:}\PY{p}{]}\PY{p}{)}
+
+    \PY{c+c1}{\PYZsh{} Calcular el determinante como el producto de los elementos diagonales}
+    \PY{n}{det} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{prod}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{diag}\PY{p}{(}\PY{n}{matriz}\PY{p}{)}\PY{p}{)}
+
+    \PY{k}{return} \PY{n+nb}{int}\PY{p}{(}\PY{n}{signo} \PY{o}{*} \PY{n}{det}\PY{p}{)}\PY{p}{,} \PY{n}{matriz}
+
+\PY{k}{def} \PY{n+nf}{formato\PYZus{}fraccion}\PY{p}{(}\PY{n}{valor}\PY{p}{)}\PY{p}{:}
+\PY{+w}{    }\PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Función para formatear una fracción como texto \PYZsq{}num/den\PYZsq{}.\PYZdq{}\PYZdq{}\PYZdq{}}
+    
+    \PY{c+c1}{\PYZsh{}return f\PYZdq{}\PYZob{}valor.numerator\PYZcb{}/\PYZob{}valor.denominator\PYZcb{}\PYZdq{}}
+    \PY{n}{fraccion} \PY{o}{=} \PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}}\PY{n}{valor}\PY{o}{.}\PY{n}{numerator}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{/}\PY{l+s+si}{\PYZob{}}\PY{n}{valor}\PY{o}{.}\PY{n}{denominator}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}
+    \PY{k}{return} \PY{n}{fraccion}\PY{o}{.}\PY{n}{ljust}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{fraccion}\PY{p}{)} \PY{o}{+} \PY{l+m+mi}{4}\PY{p}{)}
+
+
+\PY{c+c1}{\PYZsh{} Consideremos la siguiente matriz de dimensión 3x3:}
+\PY{n}{A} \PY{o}{=} \PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{]}\PY{p}{]}
+\PY{n}{det\PYZus{}matriz}\PY{p}{,} \PY{n}{matriz\PYZus{}superior} \PY{o}{=} \PY{n}{calcular\PYZus{}determinante}\PY{p}{(}\PY{n}{A}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} Convertir la matriz superior a formato de fracciones para impresión}
+\PY{n}{matriz\PYZus{}superior\PYZus{}fracciones} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{vectorize}\PY{p}{(}\PY{n}{formato\PYZus{}fraccion}\PY{p}{)}\PY{p}{(}\PY{n}{matriz\PYZus{}superior}\PY{p}{)}
+
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Matriz triangular superior A:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{fila}\PY{p}{)} \PY{k}{for} \PY{n}{fila} \PY{o+ow}{in} \PY{n}{matriz\PYZus{}superior\PYZus{}fracciones}\PY{p}{)}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Determinante calculado con algoritmo : }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{det\PYZus{}matriz}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Determinante calculado con numpy     : }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n+nb}{round}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{linalg}\PY{o}{.}\PY{n}{det}\PY{p}{(}\PY{n}{A}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} Consideremos la siguiente matriz de dimensión 3x3:}
+\PY{n}{B} \PY{o}{=} \PY{p}{[}\PY{p}{[}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{p}{]}
+\PY{n}{det\PYZus{}matriz}\PY{p}{,} \PY{n}{matriz\PYZus{}superior} \PY{o}{=} \PY{n}{calcular\PYZus{}determinante}\PY{p}{(}\PY{n}{B}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} Convertir la matriz superior a formato de fracciones para impresión}
+\PY{n}{matriz\PYZus{}superior\PYZus{}fracciones} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{vectorize}\PY{p}{(}\PY{n}{formato\PYZus{}fraccion}\PY{p}{)}\PY{p}{(}\PY{n}{matriz\PYZus{}superior}\PY{p}{)}
+
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Matriz triangular superior B:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{fila}\PY{p}{)} \PY{k}{for} \PY{n}{fila} \PY{o+ow}{in} \PY{n}{matriz\PYZus{}superior\PYZus{}fracciones}\PY{p}{)}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Determinante calculado con algoritmo : }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{det\PYZus{}matriz}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Determinante calculado con numpy     : }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n+nb}{round}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{linalg}\PY{o}{.}\PY{n}{det}\PY{p}{(}\PY{n}{B}\PY{p}{)}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Matriz triangular superior A:
+7/1     8/1     9/1
+0/1     6/7     12/7
+0/1     0/1     0/1
+Determinante calculado con algoritmo :  0
+Determinante calculado con numpy     :  0
+
+Matriz triangular superior B:
+6/1     8/1     9/1
+0/1     -20/3     -9/2
+0/1     0/1     37/10
+Determinante calculado con algoritmo :  148
+Determinante calculado con numpy     :  148
+    \end{Verbatim}
+
+    \textbf{\textbf{\emph{Conclusión :}}}
+
+    \emph{Los resultados obtenidos al calcular el determinante de las
+matrices A y B utilizando el método de pivoteo parcial coinciden
+exactamente con los obtenidos mediante la función np.linalg.det de
+numpy. Esto valida la eficacia del método de triangularización para
+matrices, que permite calcular el determinante sin alterar su valor.
+Este enfoque es especialmente útil cuando se requiere mantener la
+precisión numérica utilizando fracciones en lugar de números de punto
+flotante.}
 
     \subsection{Ejercicio 3:
 Comparación.}\label{ejercicio-3-comparaciuxf3n.}
@@ -892,6 +1155,53 @@ del tamaño de la matriz. Este es un tiempo de ejecución relativamente
 alto, especialmente para matrices grandes."}
 \end{quote}
 
+    \begin{itemize}
+\item
+  Calcular complejidad computacional ejercicio: Determinante de una
+  Matriz utilizando el método de pivoteo parcial
+\item
+  Función \textbf{calcular\_determinante(matriz)}:\\
+  Está función realiza las siguientes operaciones:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Vectorización y conversión a fracciones, se realiza una
+    vectorización de la matriz para convertirla en tipo
+    \textbf{'fraction'}, la cual tiene una complejidad de O(n²) en donde
+    n indica el tamaño de la matriz.
+  \item
+    Iteraciones, el algoritmo itera sobre cada fila i de la matriz y en
+    cada iteración:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Busca el máximo en la columna actual hasta el final, lo cual tiene
+      una complejidad de O(n-i)
+    \item
+      Realiza un intercambio de filas si es necesario, lo cual es una
+      operación O(n).
+    \item
+      Realiza una eliminación por filas hacia adelante, que implica
+      operaciones vectorizadas que pueden ser aproximadamente O((n
+      -i)²).
+    \end{itemize}
+  \item
+    Calcular el determinante, después de triangular la matriz, se
+    calcula el determinante como el producto de los elementos
+    diagonales, lo cual es una operación O(n).
+  \end{itemize}
+\end{itemize}
+
+\begin{quote}
+\emph{"Dado que el algoritmo realiza operaciones principalmente sobre
+una matriz cuadrada de tamaño nxn la complejidad total puede aproximarse
+a O(n)³. Esto se debe a que las operaciones de búsqueda del máximo y
+eliminación por filas son operaciones cuadráticas dentro de un bucle n
+veces."}
+\end{quote}
+
     \subsubsection{\texorpdfstring{Generar matrices aleatoriamente en
 dimensión \(n ∈\) \{ 2, 3, · · , 9, 10 \} y comparar el tiempo de
 ejecución de cada una de estas dos implementaciones con la función
@@ -901,7 +1211,7 @@ numpy.random.rand para generar los coeficientes aleatorios de sus
 matrices.}{Generar matrices aleatoriamente en dimensión n ∈ \{ 2, 3, · · , 9, 10 \} y comparar el tiempo de ejecución de cada una de estas dos implementaciones con la función numpy.linalg.det (la función determinante de la extensión numérica de Python al álgebra lineal). Indicación: se puede utilizar la función numpy.random.rand para generar los coeficientes aleatorios de sus matrices.}}\label{generar-matrices-aleatoriamente-en-dimensiuxf3n-n-2-3-9-10-y-comparar-el-tiempo-de-ejecuciuxf3n-de-cada-una-de-estas-dos-implementaciones-con-la-funciuxf3n-numpy.linalg.det-la-funciuxf3n-determinante-de-la-extensiuxf3n-numuxe9rica-de-python-al-uxe1lgebra-lineal.-indicaciuxf3n-se-puede-utilizar-la-funciuxf3n-numpy.random.rand-para-generar-los-coeficientes-aleatorios-de-sus-matrices.}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{2}{\boxspacing}
+\prompt{In}{incolor}{95}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
 \PY{k+kn}{import} \PY{n+nn}{timeit}
@@ -909,7 +1219,7 @@ matrices.}{Generar matrices aleatoriamente en dimensión n ∈ \{ 2, 3, · · , 
 \end{tcolorbox}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{3}{\boxspacing}
+\prompt{In}{incolor}{96}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k}{def} \PY{n+nf}{det\PYZus{}laplace}\PY{p}{(}\PY{n}{matriz}\PY{p}{:} \PY{n}{np}\PY{o}{.}\PY{n}{ndarray}\PY{p}{)} \PY{o}{\PYZhy{}}\PY{o}{\PYZgt{}} \PY{n+nb}{float}\PY{p}{:}
 \PY{+w}{  }\PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Calcula el determinante de una matriz usando la regla de Laplace.}
@@ -970,7 +1280,7 @@ matrices.}{Generar matrices aleatoriamente en dimensión n ∈ \{ 2, 3, · · , 
 \end{tcolorbox}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{4}{\boxspacing}
+\prompt{In}{incolor}{97}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Dimensión}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{ljust}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{| T.Laplace (ms)}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{ljust}\PY{p}{(}\PY{l+m+mi}{17}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{| T.Gauss\PYZhy{}Jordan (ms)}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{ljust}\PY{p}{(}\PY{l+m+mi}{22}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{| T.numpy.linalg.det (ms)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZhy{}}\PY{l+s+s2}{\PYZdq{}} \PY{o}{*} \PY{l+m+mi}{75}\PY{p}{)}
@@ -993,16 +1303,23 @@ matrices.}{Generar matrices aleatoriamente en dimensión n ∈ \{ 2, 3, · · , 
     \begin{Verbatim}[commandchars=\\\{\}]
 Dimensión | T.Laplace (ms) | T.Gauss-Jordan (ms) | T.numpy.linalg.det (ms)
 ---------------------------------------------------------------------------
-2         | 0.009608       | 0.046513            | 0.035703
-3         | 0.410473       | 0.042401            | 0.024766
-4         | 0.830461       | 0.063236            | 0.026046
-5         | 2.359853       | 0.090583            | 0.040796
-6         | 13.553588      | 0.130150            | 0.036440
-7         | 80.875877      | 0.162143            | 0.046795
-8         | 643.808716     | 0.210978            | 0.045501
-9         | 5897.031685    | 0.237919            | 0.040963
-10        | 58559.983033   | 0.291078            | 0.039791
+2         | 0.011021       | 0.040960            | 0.046467
+3         | 0.114820       | 0.045672            | 0.042871
+4         | 0.390938       | 0.067282            | 0.037821
+5         | 2.464395       | 0.092947            | 0.058323
+6         | 14.373713      | 0.117725            | 0.039186
+7         | 92.178981      | 0.147262            | 0.038534
+8         | 727.794312     | 0.178852            | 0.044963
+9         | 6274.807835    | 0.233912            | 0.039860
+10        | 63215.603985   | 0.211654            | 0.045628
     \end{Verbatim}
+
+    \textbf{\textbf{\emph{Conclusión}}:}
+
+    \emph{"Como podemos observar el tiempo de ejecución en
+\textbf{np.linalg.det} de \textbf{numpy} es mucho más eficiente que el
+tiempo que tardan en ejecutarse los algoritmos planteados para calcular
+el determinante con la función : det\_laplace y det\_gauss\_jordan."}
 
     \section{Ejercicios acerca del
 gradiente}\label{ejercicios-acerca-del-gradiente}
